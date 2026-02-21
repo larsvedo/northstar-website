@@ -42,60 +42,35 @@ This document is the technical reference for building and maintaining the North 
 
 ## Design System
 
-### Colors
+The full visual identity (colors, typography, spacing, effects, motion) is documented in the **shared style guide** at `~/git/northstar/STYLE_GUIDE.md`. That file is the source of truth for all North Star projects.
 
-CSS custom properties defined in `src/styles/global.css`. All components reference these variables so dark mode is a single toggle.
+### Web-Specific Implementation
 
-**Light mode:**
-- Background: `#ffffff`
-- Surface: `#f8fafc` (slate-50)
-- Text primary: `#0f172a` (slate-900)
-- Text secondary: `#475569` (slate-600)
-- Accent: `#3b82f6` (blue-500)
-- Accent hover: `#2563eb` (blue-600)
-- Border: `#e2e8f0` (slate-200)
+- **Colors:** CSS custom properties defined in `src/styles/global.css` under `@theme`. All components use `var(--color-*)` / Tailwind `bg-(--color-*)` syntax.
+- **Dark mode is default.** Light mode overrides live under `html.light` in global.css.
+- **Fonts:** Inter (UI) and Instrument Serif (display) loaded via Google Fonts preconnect in `BaseLayout.astro`. The `.font-display` utility class applies the serif font.
+- **Custom utilities:** Grain texture (`.grain`), starfield (`.starfield`), gradient border cards (`.card-gradient`), glass nav (`.glass`), layered shadows (`.shadow-premium`, `.shadow-glow`), scroll reveal (`.reveal`), animations (`.animate-twinkle`, `.animate-float`, `.animate-drift`, `.animate-glow-pulse`, `.shimmer`) — all defined in `global.css` under `@layer utilities`.
 
-**Dark mode:**
-- Background: `#0f172a` (slate-900)
-- Surface: `#1e293b` (slate-800)
-- Text primary: `#f8fafc` (slate-50)
-- Text secondary: `#94a3b8` (slate-400)
-- Accent: `#60a5fa` (blue-400)
-- Accent hover: `#3b82f6` (blue-500)
-- Border: `#334155` (slate-700)
+### Key CSS Architecture Rules
 
-### Typography
-
-System font stack for zero font-loading cost:
-
-```css
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-```
-
-**Scale:**
-- Hero headline: `text-5xl` / `text-6xl` (48px / 60px)
-- Section headline: `text-3xl` / `text-4xl` (30px / 36px)
-- Body: `text-base` / `text-lg` (16px / 18px)
-- Small: `text-sm` (14px)
-
-### Spacing
-
-Use Tailwind's default spacing scale. Section padding: `py-20` (80px) on desktop, `py-12` (48px) on mobile. Max content width: `max-w-6xl` (1152px) centered with `mx-auto px-6`.
-
-### Border Radius
-
-Cards and buttons: `rounded-xl` (12px). Smaller elements: `rounded-lg` (8px).
+- Never use raw hex colors in components. Always reference `--color-*` variables.
+- Use `--color-accent-solid` (not `--color-accent`) for filled buttons with white text. The lighter `--color-accent` is for text highlights, decorative lines, and icons.
+- Section spacing: `py-28` to `py-44` for generous vertical breathing room.
+- Content max width: `max-w-7xl` (1280px) centered with `mx-auto px-6 lg:px-8`.
+- Cards: `rounded-2xl` (16px). Buttons: `rounded-full` (pill). Tags: `rounded-full` or `rounded-lg`.
 
 ---
 
 ## Dark Mode Strategy
 
-1. On page load, check `localStorage.getItem("theme")`.
-2. If no stored preference, respect `prefers-color-scheme` media query.
-3. Apply `class="dark"` to `<html>` element for dark mode.
-4. All color references use Tailwind's `dark:` variant.
-5. The `ThemeToggle` component (an Astro island with inline `<script>`) toggles the class and persists to `localStorage`.
-6. To prevent flash of wrong theme, the theme detection script runs in `<head>` as a blocking inline script.
+Dark mode is the **default**. Light mode is the override (inverted from typical pattern).
+
+1. On page load, a blocking `<head>` script checks `localStorage.getItem("theme")`.
+2. If no stored preference, dark mode stays active (no class added).
+3. If the stored theme is `"light"`, the script adds `class="light"` to `<html>`.
+4. All color references use CSS custom properties (`--color-*`). The `html.light` selector in `global.css` overrides all variables for light mode.
+5. The `ThemeToggle` component toggles the `light` class on `<html>` and persists to `localStorage`.
+6. No `dark:` Tailwind variants are used — everything flows through CSS custom properties.
 
 ---
 

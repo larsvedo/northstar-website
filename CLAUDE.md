@@ -6,7 +6,7 @@ This file is your reference when working on the marketing website. Read it at th
 
 North Star Website is the marketing site for North Star, a native macOS product management tool that records calls, transcribes them locally, and uses AI to extract product insights. The website communicates the value proposition and drives downloads.
 
-See `documentation/OVERVIEW.md` for the messaging strategy and `documentation/TECHNICAL_STRATEGY.md` for all architectural decisions.
+See `documentation/OVERVIEW.md` for the messaging strategy and `documentation/TECHNICAL_STRATEGY.md` for all architectural decisions. See `~/git/northstar/STYLE_GUIDE.md` for the shared visual identity (colors, typography, spacing, effects) used across all North Star projects.
 
 ## Documentation
 
