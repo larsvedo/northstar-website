@@ -7,20 +7,26 @@ import "../styles/global.css";
 
 <BaseLayout title="Page Not Found — North Star">
   <Nav />
-  <main class="flex min-h-[70vh] items-center justify-center pt-20">
-    <div class="text-center px-6">
-      <p class="mb-2 text-6xl font-bold text-(--color-accent)">404</p>
-      <h1 class="mb-4 text-2xl font-semibold text-(--color-text)">
+  <main class="grain relative flex min-h-[80vh] items-center justify-center pt-20">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[500px] rounded-full bg-(--color-accent)/5 blur-[120px]"></div>
+    </div>
+    <div class="relative z-10 text-center px-6">
+      <p class="font-display text-8xl text-(--color-accent)/20 mb-4">404</p>
+      <h1 class="text-xl font-medium text-(--color-text) mb-3">
         Page not found
       </h1>
-      <p class="mb-8 text-(--color-text-secondary)">
+      <p class="mb-8 text-sm text-(--color-text-tertiary)">
         The page you're looking for doesn't exist or has been moved.
       </p>
       <a
         href="/"
-        class="inline-flex rounded-lg bg-(--color-accent) px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-(--color-accent-hover)"
+        class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-(--color-accent-solid) px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-(--color-accent-solid-hover) hover:shadow-glow"
       >
-        Back to home
+        <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+        </svg>
+        <span class="relative z-10">Back to home</span>
       </a>
     </div>
   </main>

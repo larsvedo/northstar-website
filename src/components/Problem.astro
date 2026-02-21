@@ -1,40 +1,56 @@
 ---
 ---
 
-<section id="problem" class="border-t border-(--color-border) py-20 md:py-28">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="mx-auto max-w-3xl">
-      <!-- Section label -->
-      <p class="mb-4 text-sm font-medium tracking-wide text-(--color-accent) uppercase">
-        The Problem
-      </p>
+<section id="problem" class="relative py-28 md:py-40">
+  <!-- Scattered constellation dots -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="animate-twinkle absolute top-[15%] right-[8%] h-0.5 w-0.5 rounded-full bg-(--color-star-dim)" style="animation-delay: 0.5s;"></div>
+    <div class="animate-twinkle absolute top-[60%] right-[15%] h-1 w-1 rounded-full bg-(--color-star)" style="animation-delay: 2.1s;"></div>
+    <div class="animate-twinkle absolute top-[35%] left-[3%] h-0.5 w-0.5 rounded-full bg-(--color-star-dim)" style="animation-delay: 1.3s;"></div>
+    <div class="animate-twinkle absolute bottom-[20%] right-[5%] h-0.5 w-0.5 rounded-full bg-(--color-star)" style="animation-delay: 0.7s;"></div>
+  </div>
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="grid items-start gap-16 lg:grid-cols-12">
 
-      <h2 class="mb-8 text-3xl font-bold tracking-tight text-(--color-text) md:text-4xl">
-        Speed without direction
-      </h2>
-
-      <div class="space-y-6 text-lg leading-relaxed text-(--color-text-secondary)">
-        <p>
-          Vibe coding has made building 10x faster. You can ship a feature in an
-          afternoon that used to take a sprint. AI writes code, generates tests,
-          scaffolds entire systems. The bottleneck isn't building anymore.
+      <!-- Left column: large pull quote -->
+      <div class="reveal lg:col-span-5">
+        <span class="inline-flex items-center gap-2 text-[13px] tracking-widest text-(--color-text-tertiary) uppercase mb-8 block">
+          <span class="inline-block h-px w-8 bg-(--color-warm)"></span>
+          The problem
+        </span>
+        <p class="font-display text-[clamp(2.5rem,5vw,4rem)] leading-[0.95] tracking-tight text-(--color-text)">
+          Speed without <em class="text-(--color-warm)">direction</em>
         </p>
+        <!-- Decorative element -->
+        <div class="mt-12 h-px w-24 bg-gradient-to-r from-(--color-warm) to-transparent"></div>
+      </div>
 
-        <p>
-          The bottleneck is knowing <em class="text-(--color-text) not-italic font-medium">what to build</em>.
-          Speed without customer signal means building the wrong
-          things faster. You ship features nobody asked for. You miss the pain
-          point that three different customers mentioned last week. You build
-          based on gut and recent memory instead of structured evidence.
-        </p>
+      <!-- Right column: body text, offset down -->
+      <div class="lg:col-span-6 lg:col-start-7 lg:pt-16">
+        <div class="space-y-8 text-[17px] leading-[1.7] text-(--color-text-secondary)">
+          <p class="reveal reveal-delay-1">
+            Vibe coding has made building 10x faster. You can ship a feature in an
+            afternoon that used to take a sprint. AI writes code, generates tests,
+            scaffolds entire systems. The bottleneck isn't building anymore.
+          </p>
 
-        <p>
-          North Star turns every customer conversation into a compass for your
-          product. Record the call, get the transcript, see the insights. Feature
-          requests, blockers, sentiment, action items — extracted automatically,
-          searchable forever. So when you're deciding what to build next, you
-          have the signal, not just the speed.
-        </p>
+          <p class="reveal reveal-delay-2">
+            The bottleneck is knowing
+            <span class="font-medium text-(--color-text)">what to build</span>.
+            Speed without customer signal means building the wrong
+            things faster. You ship features nobody asked for. You miss the pain
+            point that three different customers mentioned last week. You build
+            based on gut and recent memory instead of structured evidence.
+          </p>
+
+          <p class="reveal reveal-delay-3">
+            North Star turns every customer conversation into a compass for your
+            product. Record the call, get the transcript, see the insights. Feature
+            requests, blockers, sentiment, action items — extracted automatically,
+            searchable forever. So when you're deciding what to build next, you
+            have the <span class="text-(--color-accent)">signal</span>, not just the speed.
+          </p>
+        </div>
       </div>
     </div>
   </div>

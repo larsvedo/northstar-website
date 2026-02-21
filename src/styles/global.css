@@ -1,14 +1,42 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #ffffff;
-  --color-surface: #f8fafc;
-  --color-text: #0f172a;
-  --color-text-secondary: #475569;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
-  --color-border: #e2e8f0;
-  --color-surface-alt: #f1f5f9;
+  /* ── Polaris Deep Space palette ── */
+  --color-bg: #0a0e17;
+  --color-surface: #111827;
+  --color-surface-alt: #1a2234;
+  --color-text: #dfe6ed;
+  --color-text-secondary: #6b7a8d;
+  --color-text-tertiary: #3d4d60;
+
+  /* Primary: Polaris blue — the north star's cool, guiding light */
+  --color-accent: #7eb8e0;
+  --color-accent-solid: #3b82d4;       /* deeper blue for buttons — white text legible */
+  --color-accent-solid-hover: #2d6db8; /* darker on hover */
+  --color-accent-hover: #a0c4d8;
+  --color-accent-muted: #7eb8e018;
+  --color-accent-glow: #7eb8e035;
+
+  /* Secondary / Warm: stellar gold — distant stars, constellations */
+  --color-warm: #fbbf24;
+  --color-warm-muted: #fbbf2418;
+
+  /* Tertiary / Cool: nebula green — success, transcription, growth */
+  --color-cool: #4ade80;
+  --color-cool-muted: #4ade8018;
+
+  /* Star white — bright accent for star elements */
+  --color-star: #f0f4ff;
+  --color-star-dim: #f0f4ff60;
+
+  --color-border: #ffffff08;
+  --color-border-subtle: #ffffff05;
+  --color-border-accent: #7eb8e025;
+
+  /* Status colors */
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
 }
 
 @layer base {
@@ -17,22 +45,243 @@
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Helvetica Neue", Arial, sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
-  html.dark {
-    --color-bg: #0f172a;
-    --color-surface: #1e293b;
-    --color-text: #f8fafc;
-    --color-text-secondary: #94a3b8;
-    --color-accent: #60a5fa;
-    --color-accent-hover: #3b82f6;
-    --color-border: #334155;
-    --color-surface-alt: #1a2332;
+  /* Light mode overrides */
+  html.light {
+    --color-bg: #f4f6f9;
+    --color-surface: #ffffff;
+    --color-surface-alt: #edf1f5;
+    --color-text: #0f1219;
+    --color-text-secondary: #5a6677;
+    --color-text-tertiary: #94a0b0;
+    --color-accent: #3b7ab5;
+    --color-accent-solid: #2563b0;
+    --color-accent-solid-hover: #1d4f94;
+    --color-accent-hover: #2d6299;
+    --color-accent-muted: #3b7ab512;
+    --color-accent-glow: #3b7ab525;
+    --color-warm: #d97706;
+    --color-warm-muted: #d9770612;
+    --color-cool: #16a34a;
+    --color-cool-muted: #16a34a12;
+    --color-star: #1e293b;
+    --color-star-dim: #1e293b40;
+    --color-border: #00000008;
+    --color-border-subtle: #00000005;
+    --color-border-accent: #3b7ab520;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: white;
+  }
+}
+
+@layer utilities {
+  /* ── Grain texture overlay ── */
+  .grain {
+    position: relative;
+  }
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* ── Starfield: scattered dots via radial gradients ── */
+  .starfield {
+    position: relative;
+  }
+  .starfield::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, var(--color-star) 50%, transparent 100%),
+      radial-gradient(1px 1px at 25% 35%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 40% 8%, var(--color-star) 50%, transparent 100%),
+      radial-gradient(1px 1px at 55% 42%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1px 1px at 65% 18%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(2px 2px at 78% 28%, var(--color-star) 30%, transparent 100%),
+      radial-gradient(1px 1px at 85% 55%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1px 1px at 92% 12%, var(--color-star) 50%, transparent 100%),
+      radial-gradient(1px 1px at 15% 65%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 33% 78%, var(--color-star) 40%, transparent 100%),
+      radial-gradient(1px 1px at 48% 88%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1px 1px at 72% 72%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(2px 2px at 88% 85%, var(--color-star) 30%, transparent 100%),
+      radial-gradient(1px 1px at 5% 90%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1px 1px at 62% 58%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1px 1px at 20% 50%, var(--color-star-dim) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 95% 45%, var(--color-star) 40%, transparent 100%),
+      radial-gradient(1px 1px at 50% 25%, var(--color-star-dim) 50%, transparent 100%);
+    opacity: 0.5;
+  }
+
+  /* ── Twinkling star animation ── */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  /* ── Gradient border cards ── */
+  .card-gradient {
+    position: relative;
+    background: var(--color-surface);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .card-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 16px;
+    background: linear-gradient(
+      135deg,
+      var(--color-border) 0%,
+      var(--color-accent-glow) 50%,
+      var(--color-border) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ── Layered shadow system ── */
+  .shadow-premium {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.4),
+      0 4px 16px rgba(0, 0, 0, 0.25),
+      0 12px 48px rgba(0, 0, 0, 0.2);
+  }
+  html.light .shadow-premium {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.06),
+      0 4px 16px rgba(0, 0, 0, 0.04),
+      0 12px 48px rgba(0, 0, 0, 0.03);
+  }
+
+  .shadow-glow {
+    box-shadow:
+      0 0 20px var(--color-accent-glow),
+      0 0 60px var(--color-accent-muted);
+  }
+
+  /* ── Glass effect ── */
+  .glass {
+    background: rgba(17, 24, 39, 0.75);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border-bottom: 1px solid var(--color-border);
+  }
+  html.light .glass {
+    background: rgba(244, 246, 249, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* ── Scroll-triggered animations ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ── Floating animation ── */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* ── Glow pulse ── */
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  /* ── Slow drift for nebula blurs ── */
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(15px, -10px) scale(1.05); }
+    66% { transform: translate(-10px, 8px) scale(0.97); }
+  }
+  .animate-drift {
+    animation: drift 20s ease-in-out infinite;
+  }
+
+  /* ── Shimmer effect ── */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-accent-muted) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 8s linear infinite;
+  }
+
+  /* ── Nav link underline animation ── */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* ── Heading font ── */
+  .font-display {
+    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-style: normal;
   }
 }

@@ -2,48 +2,52 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-(--color-border) py-12">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+<footer class="relative border-t border-(--color-border) py-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
       <!-- Logo and tagline -->
-      <div class="flex items-center gap-2">
-        <svg class="h-5 w-5 text-(--color-accent)" viewBox="0 0 32 32" fill="currentColor">
-          <path d="M16 2 L18.5 12 L28 12 L20 18.5 L23 28 L16 22 L9 28 L12 18.5 L4 12 L13.5 12 Z"></path>
-        </svg>
-        <span class="text-sm font-medium text-(--color-text)">North Star</span>
-        <span class="text-sm text-(--color-text-secondary)">
-          &mdash; Build what matters
-        </span>
+      <div>
+        <a href="#" class="group inline-flex items-center gap-2.5">
+          <svg class="h-5 w-5 text-(--color-accent) transition-transform duration-300 group-hover:scale-110" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M16 2 L18.5 12 L28 12 L20 18.5 L23 28 L16 22 L9 28 L12 18.5 L4 12 L13.5 12 Z"></path>
+          </svg>
+          <span class="text-sm font-medium text-(--color-text)">North Star</span>
+        </a>
+        <p class="mt-3 max-w-xs text-[13px] leading-relaxed text-(--color-text-tertiary)">
+          A product management compass. Record conversations, extract insights, build what matters.
+        </p>
       </div>
 
       <!-- Links -->
-      <div class="flex items-center gap-6">
-        <a
-          href="#features"
-          class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
-        >
-          Features
-        </a>
-        <a
-          href="#pricing"
-          class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
-        >
-          Pricing
-        </a>
-        <a
-          href="#download"
-          class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
-        >
-          Download
-        </a>
+      <div class="flex gap-12">
+        <div>
+          <p class="mb-4 text-[11px] font-medium tracking-widest text-(--color-text-tertiary) uppercase">Product</p>
+          <div class="flex flex-col gap-2.5">
+            <a href="#features" class="nav-link text-[13px] text-(--color-text-secondary) transition-colors hover:text-(--color-text)">Features</a>
+            <a href="#how-it-works" class="nav-link text-[13px] text-(--color-text-secondary) transition-colors hover:text-(--color-text)">How It Works</a>
+            <a href="#pricing" class="nav-link text-[13px] text-(--color-text-secondary) transition-colors hover:text-(--color-text)">Pricing</a>
+            <a href="#download" class="nav-link text-[13px] text-(--color-text-secondary) transition-colors hover:text-(--color-text)">Download</a>
+          </div>
+        </div>
+        <div>
+          <p class="mb-4 text-[11px] font-medium tracking-widest text-(--color-text-tertiary) uppercase">Legal</p>
+          <div class="flex flex-col gap-2.5">
+            <a href="#" class="nav-link text-[13px] text-(--color-text-secondary) transition-colors hover:text-(--color-text)">Privacy</a>
+            <a href="#" class="nav-link text-[13px] text-(--color-text-secondary) transition-colors hover:text-(--color-text)">Terms</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Copyright -->
-    <div class="mt-8 border-t border-(--color-border) pt-8 text-center">
-      <p class="text-xs text-(--color-text-secondary)">
+    <!-- Bottom bar -->
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-(--color-border) pt-8 md:flex-row">
+      <p class="text-[12px] text-(--color-text-tertiary)">
         &copy; {currentYear} North Star. All rights reserved.
       </p>
+      <div class="flex items-center gap-1.5">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-(--color-cool) animate-glow-pulse"></span>
+        <span class="text-[12px] text-(--color-text-tertiary)">All systems operational</span>
+      </div>
     </div>
   </div>
 </footer>

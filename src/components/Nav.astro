@@ -3,81 +3,97 @@ import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <nav
-  class="fixed top-0 right-0 left-0 z-50 border-b border-(--color-border) bg-(--color-bg)/80 backdrop-blur-lg"
+  id="main-nav"
+  class="fixed top-0 right-0 left-0 z-50 transition-all duration-500"
 >
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-2 text-lg font-semibold text-(--color-text)">
-      <svg class="h-6 w-6 text-(--color-accent)" viewBox="0 0 32 32" fill="currentColor">
-        <path d="M16 2 L18.5 12 L28 12 L20 18.5 L23 28 L16 22 L9 28 L12 18.5 L4 12 L13.5 12 Z"
-        ></path>
-      </svg>
-      North Star
+    <a href="#" class="group flex items-center gap-2.5">
+      <div class="relative">
+        <svg class="h-5 w-5 text-(--color-accent) transition-transform duration-300 group-hover:scale-110" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 2 L18.5 12 L28 12 L20 18.5 L23 28 L16 22 L9 28 L12 18.5 L4 12 L13.5 12 Z"></path>
+        </svg>
+        <div class="absolute inset-0 blur-lg bg-(--color-accent) opacity-0 transition-opacity duration-300 group-hover:opacity-30"></div>
+      </div>
+      <span class="text-sm font-medium tracking-wide text-(--color-text)">North Star</span>
     </a>
 
     <!-- Desktop links -->
     <div class="hidden items-center gap-8 md:flex">
-      <a
-        href="#features"
-        class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
-        >Features</a
-      >
-      <a
-        href="#how-it-works"
-        class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
-        >How It Works</a
-      >
-      <a
-        href="#pricing"
-        class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
-        >Pricing</a
-      >
+      <a href="#features" class="nav-link text-[13px] tracking-wide text-(--color-text-secondary) transition-colors duration-300 hover:text-(--color-text)">Features</a>
+      <a href="#how-it-works" class="nav-link text-[13px] tracking-wide text-(--color-text-secondary) transition-colors duration-300 hover:text-(--color-text)">How It Works</a>
+      <a href="#pricing" class="nav-link text-[13px] tracking-wide text-(--color-text-secondary) transition-colors duration-300 hover:text-(--color-text)">Pricing</a>
       <ThemeToggle />
       <a
         href="#download"
-        class="rounded-lg bg-(--color-accent) px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-(--color-accent-hover)"
-        >Download</a
+        class="group relative overflow-hidden rounded-full bg-(--color-accent-solid) px-5 py-2 text-[13px] font-medium text-white transition-all duration-300 hover:bg-(--color-accent-solid-hover) hover:shadow-glow"
       >
+        <span class="relative z-10">Download</span>
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] transition-transform duration-700 group-hover:translate-x-[200%]"></div>
+      </a>
     </div>
 
     <!-- Mobile hamburger -->
-    <div class="flex items-center gap-2 md:hidden">
+    <div class="flex items-center gap-3 md:hidden">
       <ThemeToggle />
       <button
         id="mobile-menu-btn"
         type="button"
         aria-label="Toggle menu"
-        class="rounded-lg p-2 text-(--color-text-secondary) hover:bg-(--color-surface)"
+        class="relative h-5 w-5 text-(--color-text-secondary)"
       >
-        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-        </svg>
+        <span id="hamburger-top" class="absolute top-0.5 left-0 h-px w-5 bg-current transition-all duration-300"></span>
+        <span id="hamburger-mid" class="absolute top-[9px] left-0 h-px w-5 bg-current transition-all duration-300"></span>
+        <span id="hamburger-bot" class="absolute bottom-0.5 left-0 h-px w-3.5 bg-current transition-all duration-300"></span>
       </button>
     </div>
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden border-t border-(--color-border) md:hidden">
-    <div class="flex flex-col gap-1 px-6 py-4">
-      <a href="#features" class="mobile-link rounded-lg px-3 py-2 text-sm text-(--color-text-secondary) hover:bg-(--color-surface)">Features</a>
-      <a href="#how-it-works" class="mobile-link rounded-lg px-3 py-2 text-sm text-(--color-text-secondary) hover:bg-(--color-surface)">How It Works</a>
-      <a href="#pricing" class="mobile-link rounded-lg px-3 py-2 text-sm text-(--color-text-secondary) hover:bg-(--color-surface)">Pricing</a>
-      <a href="#download" class="mobile-link mt-2 rounded-lg bg-(--color-accent) px-3 py-2 text-center text-sm font-medium text-white hover:bg-(--color-accent-hover)">Download</a>
+  <div id="mobile-menu" class="hidden md:hidden">
+    <div class="border-t border-(--color-border) bg-(--color-bg)/95 backdrop-blur-xl px-6 py-6">
+      <div class="flex flex-col gap-1">
+        <a href="#features" class="mobile-link rounded-lg px-4 py-3 text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text) hover:bg-(--color-surface)">Features</a>
+        <a href="#how-it-works" class="mobile-link rounded-lg px-4 py-3 text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text) hover:bg-(--color-surface)">How It Works</a>
+        <a href="#pricing" class="mobile-link rounded-lg px-4 py-3 text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text) hover:bg-(--color-surface)">Pricing</a>
+        <a href="#download" class="mobile-link mt-3 rounded-full bg-(--color-accent-solid) px-4 py-3 text-center text-sm font-medium text-white">Download</a>
+      </div>
     </div>
   </div>
 </nav>
 
 <script is:inline>
   (function () {
-    const btn = document.getElementById("mobile-menu-btn");
-    const menu = document.getElementById("mobile-menu");
-    btn.addEventListener("click", () => {
+    var btn = document.getElementById("mobile-menu-btn");
+    var menu = document.getElementById("mobile-menu");
+    var nav = document.getElementById("main-nav");
+
+    btn.addEventListener("click", function () {
       menu.classList.toggle("hidden");
     });
-    menu.querySelectorAll(".mobile-link").forEach((link) => {
-      link.addEventListener("click", () => {
+
+    menu.querySelectorAll(".mobile-link").forEach(function (link) {
+      link.addEventListener("click", function () {
         menu.classList.add("hidden");
       });
+    });
+
+    // Nav background on scroll
+    var scrolled = false;
+    window.addEventListener("scroll", function () {
+      var isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        scrolled = isScrolled;
+        if (scrolled) {
+          nav.classList.add("glass");
+          nav.querySelector("div").classList.remove("py-5");
+          nav.querySelector("div").classList.add("py-3");
+        } else {
+          nav.classList.remove("glass");
+          nav.querySelector("div").classList.remove("py-3");
+          nav.querySelector("div").classList.add("py-5");
+        }
+      }
     });
   })();
 </script>

@@ -1,91 +1,177 @@
 ---
 ---
 
-<section class="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-  <!-- Subtle gradient background -->
-  <div
-    class="pointer-events-none absolute inset-0 bg-gradient-to-b from-(--color-accent)/5 to-transparent"
-  ></div>
+<section class="grain starfield relative min-h-screen overflow-hidden pt-24 pb-0 md:pt-32">
+  <!-- Background: deep space nebula glows -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="animate-drift absolute top-[-20%] left-1/2 -translate-x-1/2 h-[600px] w-[800px] rounded-full bg-(--color-accent)/6 blur-[150px]"></div>
+    <div class="animate-drift absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-(--color-warm)/4 blur-[120px]" style="animation-delay: -7s;"></div>
+    <div class="animate-drift absolute top-1/4 right-0 h-[300px] w-[300px] rounded-full bg-(--color-cool)/4 blur-[120px]" style="animation-delay: -14s;"></div>
+  </div>
 
-  <div class="relative mx-auto max-w-6xl px-6">
-    <div class="mx-auto max-w-3xl text-center">
-      <!-- Badge -->
-      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-4 py-1.5 text-sm text-(--color-text-secondary)">
-        <svg class="h-4 w-4 text-(--color-accent)" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-        Free for individuals. No account required.
-      </div>
+  <!-- Twinkling stars -->
+  <div class="pointer-events-none absolute inset-0 z-[1]">
+    <div class="animate-twinkle absolute top-[8%] left-[12%] h-1 w-1 rounded-full bg-(--color-star)" style="animation-delay: 0s;"></div>
+    <div class="animate-twinkle absolute top-[15%] left-[68%] h-0.5 w-0.5 rounded-full bg-(--color-star-dim)" style="animation-delay: 0.8s;"></div>
+    <div class="animate-twinkle absolute top-[25%] left-[85%] h-1.5 w-1.5 rounded-full bg-(--color-star)" style="animation-delay: 1.6s;"></div>
+    <div class="animate-twinkle absolute top-[40%] left-[5%] h-0.5 w-0.5 rounded-full bg-(--color-star-dim)" style="animation-delay: 2.2s;"></div>
+    <div class="animate-twinkle absolute top-[55%] left-[92%] h-1 w-1 rounded-full bg-(--color-star)" style="animation-delay: 0.4s;"></div>
+    <div class="animate-twinkle absolute top-[70%] left-[30%] h-0.5 w-0.5 rounded-full bg-(--color-star-dim)" style="animation-delay: 1.2s;"></div>
+    <div class="animate-twinkle absolute top-[12%] left-[45%] h-0.5 w-0.5 rounded-full bg-(--color-star)" style="animation-delay: 2.8s;"></div>
+    <div class="animate-twinkle absolute top-[80%] left-[75%] h-1 w-1 rounded-full bg-(--color-star-dim)" style="animation-delay: 1.9s;"></div>
+  </div>
 
-      <!-- Headline -->
-      <h1
-        class="mb-6 text-4xl font-bold tracking-tight text-(--color-text) sm:text-5xl md:text-6xl"
-      >
-        Build What<br />
-        <span class="text-(--color-accent)">Matters</span>
-      </h1>
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Asymmetric layout: text left, visual weight right -->
+    <div class="grid min-h-[70vh] items-center gap-12 lg:grid-cols-12 lg:gap-8">
 
-      <!-- Subhead -->
-      <p class="mx-auto mb-10 max-w-2xl text-lg text-(--color-text-secondary) md:text-xl">
-        Record customer conversations. Get AI-powered insights. Stop building
-        features nobody asked for.
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a
-          href="#download"
-          class="inline-flex items-center gap-2 rounded-xl bg-(--color-accent) px-6 py-3 text-base font-medium text-white shadow-lg shadow-(--color-accent)/25 transition-all hover:bg-(--color-accent-hover) hover:shadow-xl hover:shadow-(--color-accent)/30"
-        >
-          <!-- Apple logo -->
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
-            ></path>
-          </svg>
-          Download for macOS
-        </a>
-        <a
-          href="#how-it-works"
-          class="inline-flex items-center gap-2 rounded-xl border border-(--color-border) bg-(--color-surface) px-6 py-3 text-base font-medium text-(--color-text) transition-colors hover:bg-(--color-surface-alt)"
-        >
-          See how it works
-          <svg
-            class="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- Product screenshot placeholder -->
-    <div class="mt-16 flex justify-center">
-      <div
-        class="w-full max-w-4xl overflow-hidden rounded-2xl border border-(--color-border) bg-(--color-surface) shadow-2xl"
-      >
-        <div class="flex items-center gap-2 border-b border-(--color-border) px-4 py-3">
-          <div class="h-3 w-3 rounded-full bg-red-400"></div>
-          <div class="h-3 w-3 rounded-full bg-yellow-400"></div>
-          <div class="h-3 w-3 rounded-full bg-green-400"></div>
-          <span class="ml-2 text-xs text-(--color-text-secondary)">North Star</span>
+      <!-- Text block — left aligned, not centered -->
+      <div class="lg:col-span-6 xl:col-span-5">
+        <!-- Micro-label -->
+        <div class="reveal mb-8">
+          <span class="inline-flex items-center gap-2 text-[13px] tracking-widest text-(--color-text-tertiary) uppercase">
+            <span class="inline-block h-px w-8 bg-(--color-accent)"></span>
+            Product Management
+          </span>
         </div>
-        <div class="flex aspect-video items-center justify-center bg-(--color-surface-alt) p-8">
-          <div class="text-center">
-            <svg class="mx-auto mb-4 h-16 w-16 text-(--color-accent)/30" viewBox="0 0 32 32" fill="currentColor">
-              <path d="M16 2 L18.5 12 L28 12 L20 18.5 L23 28 L16 22 L9 28 L12 18.5 L4 12 L13.5 12 Z"></path>
+
+        <!-- Headline: large, editorial, serif -->
+        <h1 class="reveal reveal-delay-1 mb-8">
+          <span class="font-display block text-[clamp(3rem,7vw,5.5rem)] leading-[0.92] tracking-tight text-(--color-text)">
+            Build what
+          </span>
+          <span class="font-display block text-[clamp(3rem,7vw,5.5rem)] leading-[0.92] tracking-tight">
+            <em class="text-(--color-accent)">matters</em>
+          </span>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="reveal reveal-delay-2 mb-10 max-w-md text-base leading-relaxed text-(--color-text-secondary) md:text-[17px]">
+          Record customer conversations. Get AI-powered insights.
+          Stop building features nobody asked for.
+        </p>
+
+        <!-- CTAs -->
+        <div class="reveal reveal-delay-3 flex items-center gap-4">
+          <a
+            href="#download"
+            class="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-(--color-accent-solid) px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-(--color-accent-solid-hover) hover:shadow-glow"
+          >
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
             </svg>
-            <p class="text-sm text-(--color-text-secondary)">Product screenshot — coming in M2</p>
+            <span class="relative z-10">Download for macOS</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] transition-transform duration-700 group-hover:translate-x-[200%]"></div>
+          </a>
+          <a
+            href="#how-it-works"
+            class="group inline-flex items-center gap-2 text-sm text-(--color-text-secondary) transition-colors duration-300 hover:text-(--color-text)"
+          >
+            See how it works
+            <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Trust line -->
+        <p class="reveal reveal-delay-4 mt-10 text-[13px] text-(--color-text-tertiary)">
+          Free for individuals &middot; No account required &middot; macOS 14+
+        </p>
+      </div>
+
+      <!-- App showcase — right side, bleeding off edge -->
+      <div class="reveal reveal-delay-2 relative lg:col-span-6 xl:col-span-7">
+        <div class="relative lg:ml-8 xl:ml-16 lg:-mr-24 xl:-mr-32">
+          <!-- Main app window -->
+          <div class="animate-float shadow-premium relative overflow-hidden rounded-2xl border border-(--color-border)" style="animation-delay: 0s;">
+            <!-- Title bar -->
+            <div class="flex items-center gap-2 border-b border-(--color-border) bg-(--color-surface) px-4 py-3">
+              <div class="h-2.5 w-2.5 rounded-full bg-[#FF5F57]"></div>
+              <div class="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]"></div>
+              <div class="h-2.5 w-2.5 rounded-full bg-[#28C840]"></div>
+              <span class="ml-3 text-[11px] tracking-wide text-(--color-text-tertiary)">North Star</span>
+            </div>
+            <!-- App content mockup -->
+            <div class="bg-(--color-surface-alt) p-6 aspect-[16/10]">
+              <!-- Sidebar + content simulation -->
+              <div class="flex h-full gap-4">
+                <!-- Sidebar -->
+                <div class="hidden w-44 shrink-0 rounded-xl bg-(--color-surface) p-3 md:block">
+                  <div class="mb-4 flex items-center gap-2">
+                    <svg class="h-4 w-4 text-(--color-accent)" viewBox="0 0 32 32" fill="currentColor">
+                      <path d="M16 2 L18.5 12 L28 12 L20 18.5 L23 28 L16 22 L9 28 L12 18.5 L4 12 L13.5 12 Z"></path>
+                    </svg>
+                    <span class="text-[11px] font-medium text-(--color-text)">Dashboard</span>
+                  </div>
+                  <div class="space-y-1.5">
+                    <div class="rounded-lg bg-(--color-accent)/10 px-2.5 py-1.5 text-[10px] text-(--color-accent)">Recordings</div>
+                    <div class="rounded-lg px-2.5 py-1.5 text-[10px] text-(--color-text-tertiary)">Insights</div>
+                    <div class="rounded-lg px-2.5 py-1.5 text-[10px] text-(--color-text-tertiary)">Feedback</div>
+                    <div class="rounded-lg px-2.5 py-1.5 text-[10px] text-(--color-text-tertiary)">Dictation</div>
+                    <div class="rounded-lg px-2.5 py-1.5 text-[10px] text-(--color-text-tertiary)">Screenshots</div>
+                  </div>
+                </div>
+                <!-- Content area -->
+                <div class="flex-1 rounded-xl bg-(--color-surface) p-4">
+                  <div class="mb-3 flex items-center justify-between">
+                    <span class="text-[11px] font-medium text-(--color-text)">Customer Interview — Acme Corp</span>
+                    <span class="rounded-full bg-(--color-cool-muted) px-2 py-0.5 text-[9px] text-(--color-cool)">Transcribed</span>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="rounded-lg bg-(--color-surface-alt) p-2.5">
+                      <p class="text-[10px] leading-relaxed text-(--color-text-secondary)">"The onboarding flow is confusing. We lost three team members in the first week because they couldn't figure out..."</p>
+                    </div>
+                    <div class="flex gap-2">
+                      <span class="rounded-full bg-(--color-accent-muted) px-2 py-0.5 text-[9px] text-(--color-accent)">Feature Request</span>
+                      <span class="rounded-full bg-(--color-warm-muted) px-2 py-0.5 text-[9px] text-(--color-warm)">Churn Signal</span>
+                    </div>
+                    <div class="rounded-lg bg-(--color-surface-alt) p-2.5">
+                      <p class="text-[10px] leading-relaxed text-(--color-text-secondary)">"What we really need is a way to see all feedback in one place, not scattered across Slack and email..."</p>
+                    </div>
+                    <div class="flex gap-2">
+                      <span class="rounded-full bg-(--color-accent-muted) px-2 py-0.5 text-[9px] text-(--color-accent)">Feature Request</span>
+                      <span class="rounded-full bg-(--color-cool-muted) px-2 py-0.5 text-[9px] text-(--color-cool)">Pain Point</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating insight card — overlapping, offset -->
+          <div class="animate-float absolute -bottom-6 -left-4 z-20 hidden md:block" style="animation-delay: 1.5s;">
+            <div class="card-gradient shadow-premium rounded-2xl p-4 w-56">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="flex h-6 w-6 items-center justify-center rounded-lg bg-(--color-warm-muted)">
+                  <svg class="h-3 w-3 text-(--color-warm)" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                  </svg>
+                </div>
+                <span class="text-[11px] font-medium text-(--color-text)">Trending Topic</span>
+              </div>
+              <p class="text-[10px] text-(--color-text-secondary)">Onboarding mentioned by <span class="text-(--color-warm)">4 customers</span> this week</p>
+            </div>
+          </div>
+
+          <!-- Floating action item — top right, slightly tilted -->
+          <div class="animate-float absolute -top-4 right-8 z-20 hidden lg:block" style="animation-delay: 3s;">
+            <div class="card-gradient shadow-premium rounded-xl p-3 w-48 rotate-2">
+              <div class="flex items-center gap-2">
+                <div class="flex h-5 w-5 items-center justify-center rounded-md bg-(--color-cool-muted)">
+                  <svg class="h-3 w-3 text-(--color-cool)" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
+                <span class="text-[10px] text-(--color-text-secondary)">Action: Redesign onboarding</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Bottom fade to next section -->
+  <div class="pointer-events-none absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t from-(--color-bg) to-transparent"></div>
 </section>

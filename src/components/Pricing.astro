@@ -19,7 +19,7 @@ const tiers = [
   {
     name: "Pro",
     price: "$19",
-    period: "/month",
+    period: "/mo",
     description: "For power users who want deeper analysis.",
     features: [
       "Everything in Solo",
@@ -35,7 +35,7 @@ const tiers = [
   {
     name: "Team",
     price: "$29",
-    period: "/user/month",
+    period: "/user/mo",
     description: "For teams that share product context.",
     features: [
       "Everything in Pro",
@@ -67,64 +67,68 @@ const tiers = [
 ];
 ---
 
-<section id="pricing" class="border-t border-(--color-border) py-20 md:py-28">
-  <div class="mx-auto max-w-6xl px-6">
+<section id="pricing" class="relative py-28 md:py-40">
+  <!-- Subtle top border -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 bg-gradient-to-r from-transparent via-(--color-border) to-transparent"></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <!-- Section header -->
-    <div class="mx-auto mb-16 max-w-2xl text-center">
-      <p class="mb-4 text-sm font-medium tracking-wide text-(--color-accent) uppercase">
+    <div class="reveal mb-20 max-w-xl">
+      <span class="inline-flex items-center gap-2 text-[13px] tracking-widest text-(--color-text-tertiary) uppercase mb-6 block">
+        <span class="inline-block h-px w-8 bg-(--color-accent)"></span>
         Pricing
-      </p>
-      <h2 class="mb-4 text-3xl font-bold tracking-tight text-(--color-text) md:text-4xl">
-        Free to start. Scales with your team.
+      </span>
+      <h2 class="font-display text-[clamp(2.5rem,5vw,3.5rem)] leading-[0.95] tracking-tight text-(--color-text) mb-5">
+        Free to start.<br /><em class="text-(--color-accent)">Scales with you.</em>
       </h2>
-      <p class="text-lg text-(--color-text-secondary)">
-        The free tier is genuinely useful for a single user. No artificial
-        restrictions designed to frustrate you into upgrading.
+      <p class="text-[17px] leading-relaxed text-(--color-text-secondary)">
+        The free tier is genuinely useful. No artificial restrictions designed to frustrate you into upgrading.
       </p>
     </div>
 
     <!-- Pricing grid -->
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       {
-        tiers.map((tier) => (
+        tiers.map((tier, i) => (
           <div
             class:list={[
-              "relative flex flex-col rounded-xl border p-6",
+              "reveal relative flex flex-col rounded-2xl p-6 transition-all duration-500",
               tier.highlighted
-                ? "border-(--color-accent) bg-(--color-accent)/5 shadow-lg shadow-(--color-accent)/10"
-                : "border-(--color-border) bg-(--color-bg)",
+                ? "card-gradient shadow-glow"
+                : "card-gradient",
             ]}
+            style={`transition-delay: ${i * 0.1}s`}
           >
             {tier.highlighted && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-(--color-accent) px-3 py-0.5 text-xs font-medium text-white">
-                Most Popular
+              <div class="absolute -top-3 left-6 rounded-full bg-(--color-accent-solid) px-3 py-1 text-[10px] font-medium tracking-wider text-white uppercase">
+                Popular
               </div>
             )}
 
-            <div class="mb-6">
-              <h3 class="mb-1 text-lg font-semibold text-(--color-text)">
+            <div class="mb-8">
+              <h3 class="mb-1 text-sm font-medium tracking-wide text-(--color-text-secondary) uppercase">
                 {tier.name}
               </h3>
-              <p class="mb-4 text-sm text-(--color-text-secondary)">
-                {tier.description}
-              </p>
-              <div class="flex items-baseline">
-                <span class="text-3xl font-bold text-(--color-text)">
+              <div class="mt-3 flex items-baseline gap-1">
+                <span class="text-4xl font-light tracking-tight text-(--color-text)">
                   {tier.price}
                 </span>
                 {tier.period && (
-                  <span class="ml-1 text-sm text-(--color-text-secondary)">
+                  <span class="text-sm text-(--color-text-tertiary)">
                     {tier.period}
                   </span>
                 )}
               </div>
+              <p class="mt-3 text-[13px] text-(--color-text-tertiary)">
+                {tier.description}
+              </p>
             </div>
 
             <ul class="mb-8 flex-1 space-y-3">
               {tier.features.map((feature) => (
-                <li class="flex items-start gap-2 text-sm text-(--color-text-secondary)">
+                <li class="flex items-start gap-2.5 text-[13px] text-(--color-text-secondary)">
                   <svg
-                    class="mt-0.5 h-4 w-4 shrink-0 text-(--color-accent)"
+                    class="mt-0.5 h-3.5 w-3.5 shrink-0 text-(--color-accent)"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="2"
@@ -144,13 +148,16 @@ const tiers = [
             <a
               href="#download"
               class:list={[
-                "rounded-lg px-4 py-2.5 text-center text-sm font-medium transition-colors",
+                "group relative overflow-hidden rounded-full px-5 py-2.5 text-center text-[13px] font-medium transition-all duration-300",
                 tier.highlighted
-                  ? "bg-(--color-accent) text-white hover:bg-(--color-accent-hover)"
-                  : "border border-(--color-border) text-(--color-text) hover:bg-(--color-surface)",
+                  ? "bg-(--color-accent-solid) text-white hover:bg-(--color-accent-solid-hover) hover:shadow-glow"
+                  : "border border-(--color-border) text-(--color-text) hover:border-(--color-border-accent) hover:text-(--color-accent)",
               ]}
             >
-              {tier.cta}
+              <span class="relative z-10">{tier.cta}</span>
+              {tier.highlighted && (
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] transition-transform duration-700 group-hover:translate-x-[200%]"></div>
+              )}
             </a>
           </div>
         ))

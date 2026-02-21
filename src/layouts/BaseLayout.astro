@@ -21,6 +21,14 @@ const ogImage = new URL("/og-image.png", Astro.site);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- Fonts: Inter for UI, Instrument Serif for display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>{title}</title>
     <meta name="description" content={description} />
 
@@ -37,20 +45,34 @@ const ogImage = new URL("/og-image.png", Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Dark mode: prevent flash by setting class before render -->
+    <!-- Theme: dark-mode-first, detect light preference -->
     <script is:inline>
       (function () {
         const theme = localStorage.getItem("theme");
-        if (
-          theme === "dark" ||
-          (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-          document.documentElement.classList.add("dark");
+        if (theme === "light" || (!theme && window.matchMedia("(prefers-color-scheme: light)").matches)) {
+          document.documentElement.classList.add("light");
         }
       })();
     </script>
   </head>
   <body class="min-h-screen bg-(--color-bg) text-(--color-text)">
     <slot />
+
+    <!-- Scroll reveal observer -->
+    <script is:inline>
+      (function () {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>
