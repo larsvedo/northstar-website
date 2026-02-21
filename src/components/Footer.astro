@@ -1,0 +1,49 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-(--color-border) py-12">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+      <!-- Logo and tagline -->
+      <div class="flex items-center gap-2">
+        <svg class="h-5 w-5 text-(--color-accent)" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M16 2 L18.5 12 L28 12 L20 18.5 L23 28 L16 22 L9 28 L12 18.5 L4 12 L13.5 12 Z"></path>
+        </svg>
+        <span class="text-sm font-medium text-(--color-text)">North Star</span>
+        <span class="text-sm text-(--color-text-secondary)">
+          &mdash; Build what matters
+        </span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex items-center gap-6">
+        <a
+          href="#features"
+          class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
+        >
+          Features
+        </a>
+        <a
+          href="#pricing"
+          class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
+        >
+          Pricing
+        </a>
+        <a
+          href="#download"
+          class="text-sm text-(--color-text-secondary) transition-colors hover:text-(--color-text)"
+        >
+          Download
+        </a>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 border-t border-(--color-border) pt-8 text-center">
+      <p class="text-xs text-(--color-text-secondary)">
+        &copy; {currentYear} North Star. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

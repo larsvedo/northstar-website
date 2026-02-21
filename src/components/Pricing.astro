@@ -1,0 +1,160 @@
+---
+const tiers = [
+  {
+    name: "Solo",
+    price: "Free",
+    period: "",
+    description: "For individual use. Get value from day one.",
+    features: [
+      "Record and transcribe calls",
+      "AI-powered insight extraction",
+      "Local storage on your Mac",
+      "Dictation with global hotkey",
+      "Screenshots and annotation",
+      "Clipboard history and snippets",
+    ],
+    cta: "Download Free",
+    highlighted: false,
+  },
+  {
+    name: "Pro",
+    price: "$19",
+    period: "/month",
+    description: "For power users who want deeper analysis.",
+    features: [
+      "Everything in Solo",
+      "Higher volume limits",
+      "Trend detection across conversations",
+      "Sentiment tracking over time",
+      "Priority transcription",
+      "Export and integrations",
+    ],
+    cta: "Get Pro",
+    highlighted: true,
+  },
+  {
+    name: "Team",
+    price: "$29",
+    period: "/user/month",
+    description: "For teams that share product context.",
+    features: [
+      "Everything in Pro",
+      "Shared workspaces",
+      "Aggregate insights across teammates",
+      "Customer-level conversation views",
+      "Team dashboards and reporting",
+      "Cloud sync",
+    ],
+    cta: "Get Team",
+    highlighted: false,
+  },
+  {
+    name: "Business",
+    price: "Custom",
+    period: "",
+    description: "For organizations that need control.",
+    features: [
+      "Everything in Team",
+      "SSO and admin controls",
+      "API access",
+      "Custom integrations",
+      "Dedicated support",
+      "SLA guarantee",
+    ],
+    cta: "Contact Us",
+    highlighted: false,
+  },
+];
+---
+
+<section id="pricing" class="border-t border-(--color-border) py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Section header -->
+    <div class="mx-auto mb-16 max-w-2xl text-center">
+      <p class="mb-4 text-sm font-medium tracking-wide text-(--color-accent) uppercase">
+        Pricing
+      </p>
+      <h2 class="mb-4 text-3xl font-bold tracking-tight text-(--color-text) md:text-4xl">
+        Free to start. Scales with your team.
+      </h2>
+      <p class="text-lg text-(--color-text-secondary)">
+        The free tier is genuinely useful for a single user. No artificial
+        restrictions designed to frustrate you into upgrading.
+      </p>
+    </div>
+
+    <!-- Pricing grid -->
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {
+        tiers.map((tier) => (
+          <div
+            class:list={[
+              "relative flex flex-col rounded-xl border p-6",
+              tier.highlighted
+                ? "border-(--color-accent) bg-(--color-accent)/5 shadow-lg shadow-(--color-accent)/10"
+                : "border-(--color-border) bg-(--color-bg)",
+            ]}
+          >
+            {tier.highlighted && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-(--color-accent) px-3 py-0.5 text-xs font-medium text-white">
+                Most Popular
+              </div>
+            )}
+
+            <div class="mb-6">
+              <h3 class="mb-1 text-lg font-semibold text-(--color-text)">
+                {tier.name}
+              </h3>
+              <p class="mb-4 text-sm text-(--color-text-secondary)">
+                {tier.description}
+              </p>
+              <div class="flex items-baseline">
+                <span class="text-3xl font-bold text-(--color-text)">
+                  {tier.price}
+                </span>
+                {tier.period && (
+                  <span class="ml-1 text-sm text-(--color-text-secondary)">
+                    {tier.period}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <ul class="mb-8 flex-1 space-y-3">
+              {tier.features.map((feature) => (
+                <li class="flex items-start gap-2 text-sm text-(--color-text-secondary)">
+                  <svg
+                    class="mt-0.5 h-4 w-4 shrink-0 text-(--color-accent)"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="#download"
+              class:list={[
+                "rounded-lg px-4 py-2.5 text-center text-sm font-medium transition-colors",
+                tier.highlighted
+                  ? "bg-(--color-accent) text-white hover:bg-(--color-accent-hover)"
+                  : "border border-(--color-border) text-(--color-text) hover:bg-(--color-surface)",
+              ]}
+            >
+              {tier.cta}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

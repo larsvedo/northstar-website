@@ -1,0 +1,84 @@
+---
+const features = [
+  {
+    title: "Record Calls",
+    description:
+      "Capture both sides of any call. Works with Zoom, Meet, Teams, and any app that plays audio. Mic and system audio recorded simultaneously.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />`,
+  },
+  {
+    title: "On-Device Transcription",
+    description:
+      "WhisperKit transcribes locally using Apple Neural Engine. Your audio never leaves your Mac. No cloud, no cost per minute, no privacy concerns.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" />`,
+  },
+  {
+    title: "AI-Powered Insights",
+    description:
+      "Feature requests, blockers, sentiment, action items — extracted automatically from every conversation. Not generic summaries, but structured product intelligence.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />`,
+  },
+  {
+    title: "Dictation",
+    description:
+      "Global hotkey to record your voice from any app. Transcription happens on-device and text is pasted automatically. Faster than typing.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />`,
+  },
+  {
+    title: "Screenshots & Annotation",
+    description:
+      "Capture your screen with a hotkey. Annotate with arrows, shapes, and text. Share with a link. All stored locally by default.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />`,
+  },
+  {
+    title: "Clipboard & Snippets",
+    description:
+      "Searchable clipboard history and reusable text snippets accessible via floating palette. Global hotkeys for instant access from any app.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />`,
+  },
+];
+---
+
+<section id="features" class="border-t border-(--color-border) bg-(--color-surface) py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Section header -->
+    <div class="mx-auto mb-16 max-w-2xl text-center">
+      <p class="mb-4 text-sm font-medium tracking-wide text-(--color-accent) uppercase">
+        Features
+      </p>
+      <h2 class="mb-4 text-3xl font-bold tracking-tight text-(--color-text) md:text-4xl">
+        Everything you need to stay on course
+      </h2>
+      <p class="text-lg text-(--color-text-secondary)">
+        From recording to insights, North Star handles the entire pipeline so
+        you can focus on building the right things.
+      </p>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        features.map((feature) => (
+          <div class="rounded-xl border border-(--color-border) bg-(--color-bg) p-6 transition-shadow hover:shadow-lg">
+            <div class="mb-4 inline-flex rounded-lg bg-(--color-accent)/10 p-2.5">
+              <svg
+                class="h-6 w-6 text-(--color-accent)"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                set:html={feature.icon}
+              />
+            </div>
+            <h3 class="mb-2 text-lg font-semibold text-(--color-text)">
+              {feature.title}
+            </h3>
+            <p class="text-sm leading-relaxed text-(--color-text-secondary)">
+              {feature.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
