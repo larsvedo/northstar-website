@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="star-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a0c4d8"/>
+      <stop offset="50%" stop-color="#7eb8e0"/>
+      <stop offset="100%" stop-color="#3b82d4"/>
+    </linearGradient>
+    <radialGradient id="star-glow" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#7eb8e0" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#7eb8e0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Breathing glow -->
+  <circle cx="60" cy="55" r="26" fill="url(#star-glow)">
+    <animate attributeName="r" values="22;32;22" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Compass star -->
+  <path d="M60 10 L65 49 L96 55 L65 61 L60 100 L55 61 L24 55 L55 49 Z" fill="url(#star-grad)"/>
+
+  <!-- Center -->
+  <circle cx="60" cy="55" r="4" fill="#f0f4ff">
+    <animate attributeName="opacity" values="0.65;1;0.65" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="3.5;4.5;3.5" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="60" cy="55" r="1.8" fill="#fff"/>
+
+  <!-- AI sparkle 1 — blooms in/out -->
+  <path d="M84 26 L85 30 L89 31 L85 32 L84 36 L83 32 L79 31 L83 30 Z" fill="#f0f4ff">
+    <animate attributeName="opacity" values="0;0.6;0" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- AI sparkle 2 — blooms offset -->
+  <path d="M92 36 L92.8 38.5 L95 39 L92.8 39.5 L92 42 L91.2 39.5 L89 39 L91.2 38.5 Z" fill="#f0f4ff">
+    <animate attributeName="opacity" values="0;0.45;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Tip twinkles -->
+  <circle cx="60" cy="13" r="1.2" fill="#f0f4ff">
+    <animate attributeName="opacity" values="0.15;0.6;0.15" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="94" cy="55" r="1" fill="#f0f4ff">
+    <animate attributeName="opacity" values="0.1;0.5;0.1" dur="3s" begin="0.75s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="60" cy="98" r="0.8" fill="#f0f4ff">
+    <animate attributeName="opacity" values="0.08;0.35;0.08" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="26" cy="55" r="0.8" fill="#f0f4ff">
+    <animate attributeName="opacity" values="0.08;0.35;0.08" dur="3s" begin="2.25s" repeatCount="indefinite"/>
+  </circle>
+</svg>
