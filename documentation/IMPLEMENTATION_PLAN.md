@@ -60,7 +60,7 @@ M0 (Setup)
 - [x] **1.1 Navigation** — Sticky nav with logo, section links, download CTA, dark mode toggle, mobile hamburger
 - [x] **1.2 Hero section** — Headline, subhead, two CTAs, product screenshot placeholder
 - [x] **1.3 Problem section** — "Speed without direction" narrative
-- [x] **1.4 Features grid** — 6 feature cards with icons, responsive grid
+- [x] **1.4 Features grid** — 6 feature cards with icons, responsive grid (updated: screenshots card expanded to include screen recording with mic/system audio toggles)
 - [x] **1.5 How It Works** — 3-step flow with descriptions
 - [x] **1.6 Use Cases** — 3 persona cards
 - [x] **1.7 Pricing** — 4 tiers with feature lists
