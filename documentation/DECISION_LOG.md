@@ -73,3 +73,15 @@ Key technical and design decisions, with context and rationale. Updated as decis
 **Rationale:** A CMS adds complexity (API calls, content modeling, auth) without benefit for a single-page site with one maintainer. Content changes happen via code commits. If content iteration becomes frequent or non-technical contributors need to edit, Astro Content Collections or a headless CMS (Sanity, Contentful) can be added later.
 
 **Alternatives:** Sanity (overkill for one page), Contentful (same), Astro Content Collections (good upgrade path but premature for now).
+
+---
+
+## W007 — Screen recording alongside screenshots (2026-02-22)
+
+**Decision:** Expand the screenshots feature to include screen recording with audio controls.
+
+**Context:** The North Star macOS app now supports screen recording in addition to screenshots. The screenshot capture flow defaults to a still screenshot, but a video button alongside the annotation tools lets users record their screen instead. Microphone and system audio can be toggled on or off during recording. Videos are saved and shared the same way as screenshots.
+
+**Rationale:** Screen recording is a natural extension of the screenshot workflow — same hotkey trigger, same annotation/sharing pipeline. Keeping it as a mode toggle (screenshot vs. video) within the existing button avoids adding a separate feature and keeps the interface simple. Audio toggles give users control over what gets captured without forcing a separate settings flow.
+
+**Alternatives:** Separate screen recording feature with its own hotkey and UI (fragments the capture experience), always-on audio recording (privacy concerns, unnecessary noise in quick clips).

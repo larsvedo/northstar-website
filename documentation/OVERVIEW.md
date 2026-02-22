@@ -64,7 +64,7 @@ See the component files in `src/components/` for the actual implementation. The 
 1. **Nav** — Logo, section links, download CTA, dark mode toggle
 2. **Hero** — Headline, subhead, two CTAs, product screenshot
 3. **Problem** — The vibe coding narrative
-4. **Features** — 6-card grid of key capabilities
+4. **Features** — 6-card grid of key capabilities (recording, transcription, AI insights, dictation, screenshots & screen recording, clipboard)
 5. **How It Works** — 3-step flow (Record, Transcribe, Analyze)
 6. **Use Cases** — 3 persona cards
 7. **Pricing** — 4 tiers with feature lists
