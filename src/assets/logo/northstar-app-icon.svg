@@ -14,9 +14,8 @@
       <stop offset="100%" stop-color="#7eb8e0" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <!-- Background -->
-  <rect width="1024" height="1024" rx="228" fill="url(#bg-grad)"/>
-  <rect width="1024" height="1024" rx="228" fill="none" stroke="#ffffff" stroke-opacity="0.024" stroke-width="2"/>
+  <!-- Background — full bleed, no rounding (OS applies its own mask) -->
+  <rect width="1024" height="1024" fill="url(#bg-grad)"/>
   <!-- Ambient stars -->
   <circle cx="170" cy="160" r="4.5" fill="#f0f4ff" opacity="0.35"/>
   <circle cx="845" cy="140" r="3.5" fill="#f0f4ff" opacity="0.25"/>
