@@ -1,15 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
   <defs>
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f1729"/>
-      <stop offset="100%" stop-color="#070b12"/>
-    </linearGradient>
     <linearGradient id="star-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#a0c4d8"/>
       <stop offset="50%" stop-color="#7eb8e0"/>
       <stop offset="100%" stop-color="#3b82d4"/>
     </linearGradient>
-    <radialGradient id="star-glow" cx="50%" cy="46%">
+    <radialGradient id="star-glow" cx="50%" cy="50%">
       <stop offset="0%" stop-color="#7eb8e0" stop-opacity="0.25"/>
       <stop offset="100%" stop-color="#7eb8e0" stop-opacity="0"/>
     </radialGradient>
@@ -17,21 +13,20 @@
   <!-- Background — pure black so corners vanish against dock -->
   <rect width="1024" height="1024" fill="#000000"/>
   <!-- Ambient stars -->
-  <circle cx="170" cy="160" r="4.5" fill="#f0f4ff" opacity="0.35"/>
-  <circle cx="845" cy="140" r="3.5" fill="#f0f4ff" opacity="0.25"/>
-  <circle cx="140" cy="780" r="3" fill="#f0f4ff" opacity="0.2"/>
-  <circle cx="870" cy="830" r="3.5" fill="#f0f4ff" opacity="0.18"/>
-  <circle cx="780" cy="420" r="2.5" fill="#f0f4ff" opacity="0.12"/>
-  <circle cx="260" cy="870" r="2" fill="#f0f4ff" opacity="0.1"/>
-  <circle cx="890" cy="560" r="2" fill="#f0f4ff" opacity="0.08"/>
+  <circle cx="130" cy="120" r="5" fill="#f0f4ff" opacity="0.35"/>
+  <circle cx="890" cy="105" r="4" fill="#f0f4ff" opacity="0.25"/>
+  <circle cx="105" cy="860" r="3.5" fill="#f0f4ff" opacity="0.2"/>
+  <circle cx="910" cy="900" r="4" fill="#f0f4ff" opacity="0.18"/>
+  <circle cx="870" cy="440" r="3" fill="#f0f4ff" opacity="0.12"/>
+  <circle cx="195" cy="920" r="2.5" fill="#f0f4ff" opacity="0.1"/>
   <!-- Glow -->
-  <circle cx="512" cy="470" r="260" fill="url(#star-glow)"/>
-  <!-- Compass star -->
-  <path d="M512 85 L554.7 418.7 L819.2 469.7 L554.7 520.7 L512 854.3 L469.3 520.7 L204.8 469.7 L469.3 418.7 Z" fill="url(#star-grad)"/>
+  <circle cx="512" cy="512" r="340" fill="url(#star-glow)"/>
+  <!-- Compass star — scaled to fill canvas, tips near edges -->
+  <path d="M512 30 L568 440 L994 512 L568 584 L512 994 L456 584 L30 512 L456 440 Z" fill="url(#star-grad)"/>
   <!-- Center -->
-  <circle cx="512" cy="469.7" r="34" fill="#f0f4ff" opacity="0.9"/>
-  <circle cx="512" cy="469.7" r="15" fill="#fff"/>
+  <circle cx="512" cy="512" r="42" fill="#f0f4ff" opacity="0.9"/>
+  <circle cx="512" cy="512" r="18" fill="#fff"/>
   <!-- AI sparkle cluster -->
-  <path d="M716.8 221.9 L725.3 256 L759.5 264.5 L725.3 273.1 L716.8 307.2 L708.3 273.1 L674.1 264.5 L708.3 256 Z" fill="#f0f4ff" opacity="0.45"/>
-  <path d="M784.9 307.2 L791.7 328.5 L813.1 335.4 L791.7 342.2 L784.9 363.5 L778.1 342.2 L756.7 335.4 L778.1 328.5 Z" fill="#f0f4ff" opacity="0.3"/>
+  <path d="M776 230 L787 274 L831 285 L787 296 L776 340 L765 296 L721 285 L765 274 Z" fill="#f0f4ff" opacity="0.45"/>
+  <path d="M848 330 L856 358 L884 366 L856 374 L848 402 L840 374 L812 366 L840 358 Z" fill="#f0f4ff" opacity="0.3"/>
 </svg>
