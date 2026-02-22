@@ -14,8 +14,10 @@
       <stop offset="100%" stop-color="#7eb8e0" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <!-- Background — full bleed, no rounding (OS applies its own mask) -->
-  <rect width="1024" height="1024" fill="url(#bg-grad)"/>
+  <!-- Background — pure black base so corners disappear against dock -->
+  <rect width="1024" height="1024" fill="#000000"/>
+  <!-- Dark navy overlay for depth in the visible area -->
+  <rect width="1024" height="1024" fill="url(#bg-grad)" opacity="0.85"/>
   <!-- Ambient stars -->
   <circle cx="170" cy="160" r="4.5" fill="#f0f4ff" opacity="0.35"/>
   <circle cx="845" cy="140" r="3.5" fill="#f0f4ff" opacity="0.25"/>
