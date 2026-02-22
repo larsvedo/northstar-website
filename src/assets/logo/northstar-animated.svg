@@ -15,9 +15,8 @@
     </radialGradient>
   </defs>
 
-  <!-- Background — pure black base so corners disappear against dock -->
+  <!-- Background — pure black so corners vanish against dock -->
   <rect width="120" height="120" fill="#000000"/>
-  <rect width="120" height="120" fill="url(#bg-grad)" opacity="0.85"/>
 
   <!-- Ambient stars -->
   <circle cx="20" cy="20" r="0.5" fill="#f0f4ff">
