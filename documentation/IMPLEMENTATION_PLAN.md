@@ -57,17 +57,16 @@ M0 (Setup)
 
 ### Tasks
 
-- [x] **1.1 Navigation** — Sticky nav with logo, section links, download CTA, dark mode toggle, mobile hamburger
-- [x] **1.2 Hero section** — Headline, subhead, two CTAs, product screenshot placeholder
+- [x] **1.1 Navigation** — Sticky nav with logo, section links, early access CTA, dark mode toggle, mobile hamburger
+- [x] **1.2 Hero section** — Headline, subhead, email signup form, product screenshot mockup
 - [x] **1.3 Problem section** — "Speed without direction" narrative
 - [x] **1.4 Features grid** — 6 feature cards with icons, responsive grid (updated: screenshots card expanded to include screen recording with mic/system audio toggles)
 - [x] **1.5 How It Works** — 3-step flow with descriptions
 - [x] **1.6 Use Cases** — 3 persona cards
-- [x] **1.7 Pricing** — 4 tiers with feature lists
-- [x] **1.8 Download CTA** — Full-width section with download button and system requirements
-- [x] **1.9 Footer** — Logo, links, copyright
-- [x] **1.10 Dark mode** — CSS custom properties, toggle component, localStorage persistence
-- [x] **1.11 SEO** — Meta tags, Open Graph, sitemap, robots.txt
+- [x] **1.7 Early Access CTA** — Full-width section with email signup form (replaced Pricing + Download sections)
+- [x] **1.8 Footer** — Logo, links, copyright
+- [x] **1.9 Dark mode** — CSS custom properties, toggle component, localStorage persistence
+- [x] **1.10 SEO** — Meta tags, Open Graph, sitemap, robots.txt
 
 **Exit Criteria:** All sections render on desktop and mobile, dark mode works, build succeeds.
 
@@ -100,7 +99,7 @@ M0 (Setup)
 - [ ] **3.1 Vercel setup** — Connect repo, configure build
 - [ ] **3.2 Custom domain** — DNS, SSL, redirects
 - [ ] **3.3 Analytics** — Privacy-respecting analytics (Plausible or Vercel Analytics)
-- [ ] **3.4 Download link** — Point CTA to latest DMG release
+- [ ] **3.4 Email service integration** — Connect signup forms to email service (Formspree, Resend, or Vercel serverless function)
 - [ ] **3.5 Final review** — Cross-browser testing, spell check, link validation
 - [ ] **3.6 Launch** — Merge to main, verify live site
 
