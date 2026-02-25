@@ -47,36 +47,44 @@
 
         <!-- Subhead -->
         <p class="reveal reveal-delay-2 mb-10 max-w-md text-base leading-relaxed text-(--color-text-secondary) md:text-[17px]">
-          Record customer conversations. Get AI-powered insights.
-          Stop building features nobody asked for.
+          A native macOS app that records customer conversations, transcribes them locally, and extracts AI-powered product insights. Sign up for early access.
         </p>
 
-        <!-- CTAs -->
-        <div class="reveal reveal-delay-3 flex items-center gap-4">
-          <a
-            href="#download"
-            class="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-(--color-accent-solid) px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-(--color-accent-solid-hover) hover:shadow-glow"
+        <!-- Email signup -->
+        <form id="hero-signup-form" class="reveal reveal-delay-3 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div class="relative flex-1 max-w-sm">
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@email.com"
+              class="w-full rounded-full border border-(--color-border) bg-(--color-surface) px-5 py-3.5 text-sm text-(--color-text) placeholder:text-(--color-text-tertiary) outline-none transition-all duration-300 focus:border-(--color-accent) focus:ring-1 focus:ring-(--color-accent)"
+            />
+          </div>
+          <button
+            type="submit"
+            class="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full bg-(--color-accent-solid) px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-(--color-accent-solid-hover) hover:shadow-glow"
           >
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+            <span class="relative z-10">Join the Waitlist</span>
+            <svg class="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
             </svg>
-            <span class="relative z-10">Download for macOS</span>
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] transition-transform duration-700 group-hover:translate-x-[200%]"></div>
-          </a>
-          <a
-            href="#how-it-works"
-            class="group inline-flex items-center gap-2 text-sm text-(--color-text-secondary) transition-colors duration-300 hover:text-(--color-text)"
-          >
-            See how it works
-            <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"></path>
+          </button>
+        </form>
+        <!-- Success message (hidden by default) -->
+        <div id="hero-signup-success" class="reveal reveal-delay-3 hidden">
+          <div class="inline-flex items-center gap-2 rounded-full bg-(--color-cool-muted) px-5 py-3 text-sm text-(--color-cool)">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
-          </a>
+            You're on the list! We'll be in touch soon.
+          </div>
         </div>
 
         <!-- Trust line -->
         <p class="reveal reveal-delay-4 mt-10 text-[13px] text-(--color-text-tertiary)">
-          Free for individuals &middot; No account required &middot; macOS 14+
+          Coming soon for macOS &middot; Be the first to know &middot; No spam, ever
         </p>
       </div>
 
@@ -175,3 +183,32 @@
   <!-- Bottom fade to next section -->
   <div class="pointer-events-none absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t from-(--color-bg) to-transparent"></div>
 </section>
+
+<script is:inline>
+  (function () {
+    function setupSignupForm(formId, successId) {
+      var form = document.getElementById(formId);
+      var success = document.getElementById(successId);
+      if (!form || !success) return;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = form.querySelector('input[name="email"]').value;
+        if (!email) return;
+
+        // Store signup locally (replace with real API endpoint when ready)
+        var signups = JSON.parse(localStorage.getItem("northstar_signups") || "[]");
+        if (signups.indexOf(email) === -1) {
+          signups.push(email);
+          localStorage.setItem("northstar_signups", JSON.stringify(signups));
+        }
+
+        form.classList.add("hidden");
+        success.classList.remove("hidden");
+      });
+    }
+
+    setupSignupForm("hero-signup-form", "hero-signup-success");
+    setupSignupForm("early-access-form", "early-access-success");
+  })();
+</script>

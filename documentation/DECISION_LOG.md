@@ -85,3 +85,15 @@ Key technical and design decisions, with context and rationale. Updated as decis
 **Rationale:** Screen recording is a natural extension of the screenshot workflow — same hotkey trigger, same annotation/sharing pipeline. Keeping it as a mode toggle (screenshot vs. video) within the existing button avoids adding a separate feature and keeps the interface simple. Audio toggles give users control over what gets captured without forcing a separate settings flow.
 
 **Alternatives:** Separate screen recording feature with its own hotkey and UI (fragments the capture experience), always-on audio recording (privacy concerns, unnecessary noise in quick clips).
+
+---
+
+## W008 — Early access signup over download (2026-02-25)
+
+**Decision:** Replace the download-focused CTAs and pricing section with email signup forms for early access.
+
+**Context:** North Star is not yet publicly available. The website needs to build a waitlist rather than offer downloads.
+
+**Rationale:** An early-access signup flow is more appropriate for pre-launch. Visitors can enter their email in either the hero section or a dedicated bottom-of-page section. The Pricing section is removed since plans aren't finalized and showing pricing pre-launch creates expectations. The signup form stores emails in localStorage as a placeholder — this should be connected to a real email service (Formspree, Resend, Mailchimp, or a Vercel serverless function) before launch.
+
+**Alternatives:** Keep download CTAs with "coming soon" label (less actionable), use a third-party landing page tool like Carrd (loses design consistency), embed a Google Form (poor UX).
