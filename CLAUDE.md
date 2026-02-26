@@ -6,7 +6,22 @@ This file is your reference when working on the marketing website. Read it at th
 
 North Star Website is the marketing site for North Star, a native macOS product management tool that records calls, transcribes them locally, and uses AI to extract product insights. The website communicates the value proposition and drives downloads.
 
-See `documentation/OVERVIEW.md` for the messaging strategy and `documentation/TECHNICAL_STRATEGY.md` for all architectural decisions. See `~/git/northstar/STYLE_GUIDE.md` for the shared visual identity (colors, typography, spacing, effects) used across all North Star projects.
+See `documentation/OVERVIEW.md` for the messaging strategy and `documentation/TECHNICAL_STRATEGY.md` for all architectural decisions.
+
+## North Star Ecosystem
+
+This repo is one part of a multi-platform project. All repos live under `/Users/lars/git/northstar/`.
+
+| Repo | Path | Purpose |
+|------|------|---------|
+| `northstar-website` | `/Users/lars/git/northstar/northstar-website/` | **This repo** — marketing website |
+| `northstar` | `/Users/lars/git/northstar/northstar/` | macOS app + server packages (source of truth for product features) |
+| `northstar-ios` | `/Users/lars/git/northstar/northstar-ios/` | iOS companion app |
+| `northstar-releases` | `/Users/lars/git/northstar/northstar-releases/` | Public repo for macOS auto-updater |
+
+**Shared resources** (at the parent level `/Users/lars/git/northstar/`):
+- `STYLE_GUIDE.md` — colors (Polaris Deep Space), typography (Inter/Instrument Serif), spacing, effects. **Use this as the design reference for the website.**
+- `.claude/commands/` — slash commands: `/build-web`, `/build-mac`, `/build-ios`, `/check`
 
 ## Documentation
 
@@ -14,19 +29,10 @@ All project documentation lives in `documentation/`. These files are living docu
 
 | File | Purpose | When to reference |
 |------|---------|------------------|
-| `OVERVIEW.md` | Website purpose, audience, messaging strategy, content hierarchy | Before writing or changing any copy or page content |
-| `TECHNICAL_STRATEGY.md` | Stack, architecture, performance targets, design system | Before making any technical decision |
-| `IMPLEMENTATION_PLAN.md` | Milestone-based task list with checkboxes | Before starting work and after completing tasks |
-| `DECISION_LOG.md` | Key decisions with context and rationale | When making a non-trivial technical or design decision |
-
-## Related Repos
-
-| Repo | Path | Purpose |
-|------|------|---------|
-| `northstar` | `~/git/northstar/northstar/` | macOS app + server packages (source of truth for product features and docs) |
-| `northstar-ios` | `~/git/northstar/northstar-ios/` | iOS companion app |
-| `northstar-releases` | `~/git/northstar/northstar-releases/` | macOS auto-updater releases |
-| `northstar-website` | `~/git/northstar/northstar-website/` | This repo — marketing website |
+| `documentation/OVERVIEW.md` | Website purpose, audience, messaging strategy, content hierarchy | Before writing or changing any copy or page content |
+| `documentation/TECHNICAL_STRATEGY.md` | Stack, architecture, performance targets, design system | Before making any technical decision |
+| `documentation/IMPLEMENTATION_PLAN.md` | Milestone-based task list with checkboxes | Before starting work and after completing tasks |
+| `documentation/DECISION_LOG.md` | Key decisions with context and rationale | When making a non-trivial technical or design decision |
 
 ## Tech Stack
 
@@ -100,8 +106,9 @@ northstar-website/
 1. Mark completed tasks in `documentation/IMPLEMENTATION_PLAN.md`.
 2. If you made a non-trivial decision, add an entry to `documentation/DECISION_LOG.md`.
 3. Verify the build passes: `npm run build`
+4. **To deploy**, use the `/build-web` slash command or push to main (Vercel auto-deploys).
 
-## Build Commands
+## Build & Deploy
 
 ```bash
 npm run dev      # Start dev server at localhost:4321
@@ -109,6 +116,8 @@ npm run build    # Build static site to dist/
 npm run preview  # Preview the built site locally
 npm run format   # Format all files with Prettier
 ```
+
+**Deployment:** Vercel auto-deploys on push to `main`. Domain: `northstar.app`. No manual deploy step needed — just push to main.
 
 ## Git Workflow
 
