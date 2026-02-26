@@ -184,31 +184,46 @@
   <div class="pointer-events-none absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t from-(--color-bg) to-transparent"></div>
 </section>
 
-<script is:inline>
-  (function () {
-    function setupSignupForm(formId, successId) {
-      var form = document.getElementById(formId);
-      var success = document.getElementById(successId);
-      if (!form || !success) return;
+<script>
+  const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+  const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var email = form.querySelector('input[name="email"]').value;
-        if (!email) return;
+  function setupSignupForm(formId: string, successId: string) {
+    const form = document.getElementById(formId) as HTMLFormElement | null;
+    const success = document.getElementById(successId);
+    if (!form || !success) return;
 
-        // Store signup locally (replace with real API endpoint when ready)
-        var signups = JSON.parse(localStorage.getItem("northstar_signups") || "[]");
-        if (signups.indexOf(email) === -1) {
-          signups.push(email);
-          localStorage.setItem("northstar_signups", JSON.stringify(signups));
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input[name="email"]') as HTMLInputElement;
+      const email = input?.value.trim();
+      if (!email) return;
+
+      const btn = form.querySelector('button') as HTMLButtonElement;
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Prefer': 'return=minimal',
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        if (res.ok || res.status === 409) {
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
         }
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
 
-        form.classList.add("hidden");
-        success.classList.remove("hidden");
-      });
-    }
-
-    setupSignupForm("hero-signup-form", "hero-signup-success");
-    setupSignupForm("early-access-form", "early-access-success");
-  })();
+  setupSignupForm('hero-signup-form', 'hero-signup-success');
+  setupSignupForm('early-access-form', 'early-access-success');
 </script>
