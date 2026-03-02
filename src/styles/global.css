@@ -217,6 +217,22 @@
   .reveal-delay-4 { transition-delay: 0.4s; }
   .reveal-delay-5 { transition-delay: 0.5s; }
 
+  /* ── Word rotation (EarlyAccess headline) ── */
+  @keyframes word-rotate {
+    0%, 16% { transform: translateY(0); }
+    20%, 36% { transform: translateY(-20%); }
+    40%, 56% { transform: translateY(-40%); }
+    60%, 76% { transform: translateY(-60%); }
+    80%, 96% { transform: translateY(-80%); }
+  }
+  .animate-word-rotate {
+    animation: word-rotate 12s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+  .animate-word-rotate > span {
+    display: block;
+    line-height: 1.15;
+  }
+
   /* ── Floating animation ── */
   @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
