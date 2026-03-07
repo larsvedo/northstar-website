@@ -54,34 +54,37 @@ northstar-website/
 │   └── DECISION_LOG.md
 ├── src/
 │   ├── layouts/
-│   │   └── BaseLayout.astro
+│   │   └── BaseLayout.astro      # HTML shell, meta tags, fonts, dark mode script, scroll reveal
 │   ├── pages/
-│   │   ├── index.astro
+│   │   ├── index.astro            # Main page (composes all section components)
 │   │   └── 404.astro
-│   ├── components/
-│   │   ├── Nav.astro
-│   │   ├── Hero.astro
-│   │   ├── Problem.astro
-│   │   ├── Features.astro
-│   │   ├── HowItWorks.astro
-│   │   ├── UseCases.astro
-│   │   ├── Pricing.astro
-│   │   ├── Download.astro
-│   │   ├── Footer.astro
-│   │   └── ThemeToggle.astro
+│   ├── components/                # Page sections (in display order)
+│   │   ├── Nav.astro              # Sticky header with logo, links, CTA, theme toggle
+│   │   ├── Hero.astro             # Headline, email signup, product mockup
+│   │   ├── Problem.astro          # Vibe coding narrative
+│   │   ├── Features.astro         # 6-card grid (record, transcribe, AI, dictation, screenshots, clipboard)
+│   │   ├── HowItWorks.astro       # 3-step flow (Record, Transcribe, Analyze)
+│   │   ├── UseCases.astro         # 3 persona cards
+│   │   ├── EarlyAccess.astro      # Email signup CTA (active — replaces Pricing + Download)
+│   │   ├── Footer.astro           # Links & copyright
+│   │   ├── ThemeToggle.astro      # Dark/light mode toggle (client:load island)
+│   │   ├── Pricing.astro          # (inactive — kept for reference, not in index.astro)
+│   │   └── Download.astro         # (inactive — kept for reference, not in index.astro)
 │   ├── styles/
-│   │   └── global.css
+│   │   └── global.css             # Tailwind imports, CSS custom properties, animations, utilities
 │   └── assets/
-│       ├── images/
-│       ├── icons/
-│       └── logo/
+│       ├── images/                # Product screenshots (Astro-optimized)
+│       ├── icons/                 # SVG icons (inlined)
+│       └── logo/                  # Logo variants
 ├── public/
 │   ├── favicon.svg
-│   └── og-image.png
-├── astro.config.mjs
-├── tsconfig.json
+│   ├── favicon.ico
+│   ├── apple-touch-icon.png
+│   └── robots.txt
+├── astro.config.mjs               # Site URL, sitemap, Tailwind vite plugin
+├── tsconfig.json                   # TypeScript strict mode
 ├── package.json
-├── .prettierrc
+├── .prettierrc                     # Prettier with Astro + Tailwind plugins
 └── .gitignore
 ```
 
