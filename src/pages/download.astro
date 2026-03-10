@@ -1,0 +1,213 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout title="Download North Star" description="Download the North Star macOS app with your invite code.">
+  <Nav />
+  <main>
+    <section class="grain starfield relative overflow-hidden pt-40 pb-32 md:pt-48 md:pb-44" style="min-height: 80vh;">
+      <!-- Background effects -->
+      <div class="pointer-events-none absolute inset-0">
+        <div class="animate-drift absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full bg-(--color-accent)/8 blur-[150px]"></div>
+        <div class="animate-drift absolute top-0 right-0 h-[250px] w-[350px] rounded-full bg-(--color-cool)/4 blur-[120px]" style="animation-delay: -5s;"></div>
+      </div>
+
+      <!-- Stars -->
+      <div class="pointer-events-none absolute inset-0 z-[1]">
+        <div class="animate-twinkle absolute top-[15%] left-[20%] h-1 w-1 rounded-full bg-(--color-star)" style="animation-delay: 0.3s;"></div>
+        <div class="animate-twinkle absolute top-[25%] right-[15%] h-1.5 w-1.5 rounded-full bg-(--color-star)" style="animation-delay: 1.2s;"></div>
+        <div class="animate-twinkle absolute bottom-[20%] left-[10%] h-0.5 w-0.5 rounded-full bg-(--color-star-dim)" style="animation-delay: 2.1s;"></div>
+        <div class="animate-twinkle absolute top-[40%] right-[8%] h-0.5 w-0.5 rounded-full bg-(--color-star)" style="animation-delay: 0.7s;"></div>
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-xl px-6 lg:px-8">
+        <!-- Code entry state -->
+        <div id="code-section" class="reveal text-center">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-(--color-border) bg-(--color-surface) px-4 py-1.5 text-xs tracking-wide text-(--color-text-secondary)">
+            <svg class="h-3.5 w-3.5 text-(--color-accent)" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+            Early Access
+          </div>
+
+          <h1 class="font-display text-5xl md:text-6xl tracking-tight text-(--color-text) mb-4">
+            Download<br /><span class="text-(--color-accent)">North Star</span>
+          </h1>
+
+          <p class="mb-10 text-[17px] leading-relaxed text-(--color-text-secondary)">
+            Enter your invite code to download the app.
+          </p>
+
+          <form id="code-form" class="mx-auto flex max-w-sm flex-col gap-3 sm:flex-row sm:items-center">
+            <div class="relative flex-1">
+              <input
+                type="text"
+                id="code-input"
+                name="code"
+                required
+                placeholder="Enter invite code"
+                autocomplete="off"
+                spellcheck="false"
+                class="w-full rounded-full border border-(--color-border) bg-(--color-surface) px-5 py-4 text-sm text-center tracking-[0.2em] uppercase text-(--color-text) placeholder:text-(--color-text-tertiary) placeholder:tracking-normal placeholder:normal-case outline-none transition-all duration-300 focus:border-(--color-accent) focus:ring-1 focus:ring-(--color-accent)"
+              />
+            </div>
+            <button
+              type="submit"
+              id="verify-btn"
+              class="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-(--color-accent-solid) px-8 py-4 text-sm font-medium text-white transition-all duration-500 hover:bg-(--color-accent-solid-hover) hover:shadow-glow hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span class="relative z-10" id="btn-text">Verify</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] transition-transform duration-1000 group-hover:translate-x-[200%]"></div>
+            </button>
+          </form>
+
+          <p id="error-msg" class="mt-4 text-sm text-(--color-error) hidden"></p>
+        </div>
+
+        <!-- Download state (hidden initially) -->
+        <div id="download-section" class="reveal text-center hidden">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-(--color-cool)/30 bg-(--color-cool-muted) px-4 py-1.5 text-xs tracking-wide text-(--color-cool)">
+            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+            Access Granted
+          </div>
+
+          <h1 class="font-display text-5xl md:text-6xl tracking-tight text-(--color-text) mb-4">
+            Welcome to<br /><span class="text-(--color-accent)">North Star</span>
+          </h1>
+
+          <p id="welcome-name" class="mb-10 text-[17px] leading-relaxed text-(--color-text-secondary)">
+            Your early access is confirmed. Download the app to get started.
+          </p>
+
+          <a
+            id="download-link"
+            href="https://github.com/larsvedo/northstar/releases/latest/download/NorthStar-v0.7.54.dmg"
+            class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-(--color-accent-solid) px-10 py-4 text-base font-medium text-white transition-all duration-500 hover:bg-(--color-accent-solid-hover) hover:shadow-glow hover:scale-[1.02]"
+          >
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span class="relative z-10">Download for macOS</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] transition-transform duration-1000 group-hover:translate-x-[200%]"></div>
+          </a>
+
+          <p class="mt-6 text-[13px] text-(--color-text-tertiary)">
+            Requires macOS 15 or later &middot; Apple Silicon &amp; Intel
+          </p>
+
+          <div class="mt-12 rounded-2xl border border-(--color-border) bg-(--color-surface) p-6 text-left">
+            <h3 class="text-sm font-medium text-(--color-text) mb-3">Getting started</h3>
+            <ol class="space-y-2 text-sm text-(--color-text-secondary)">
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 flex items-center justify-center h-5 w-5 rounded-full bg-(--color-accent)/10 text-[11px] font-medium text-(--color-accent)">1</span>
+                Open the DMG and drag North Star to Applications
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 flex items-center justify-center h-5 w-5 rounded-full bg-(--color-accent)/10 text-[11px] font-medium text-(--color-accent)">2</span>
+                Launch the app and sign in with Google
+              </li>
+              <li class="flex gap-3">
+                <span class="flex-shrink-0 flex items-center justify-center h-5 w-5 rounded-full bg-(--color-accent)/10 text-[11px] font-medium text-(--color-accent)">3</span>
+                Grant microphone and screen recording permissions when prompted
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+  const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+  const form = document.getElementById('code-form') as HTMLFormElement;
+  const input = document.getElementById('code-input') as HTMLInputElement;
+  const btn = document.getElementById('verify-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text')!;
+  const errorMsg = document.getElementById('error-msg')!;
+  const codeSection = document.getElementById('code-section')!;
+  const downloadSection = document.getElementById('download-section')!;
+  const welcomeName = document.getElementById('welcome-name')!;
+
+  // Check for code in URL params
+  const params = new URLSearchParams(window.location.search);
+  const urlCode = params.get('code');
+  if (urlCode) {
+    input.value = urlCode;
+    // Auto-verify if code is in URL
+    verifyCode(urlCode);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const code = input.value.trim().toUpperCase();
+    if (!code) return;
+    await verifyCode(code);
+  });
+
+  async function verifyCode(code: string) {
+    btn.disabled = true;
+    btnText.textContent = 'Checking...';
+    errorMsg.classList.add('hidden');
+
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/invites?code=eq.${encodeURIComponent(code.toUpperCase())}&approved=eq.true&select=code,name,email`,
+        {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          },
+        }
+      );
+
+      if (!res.ok) throw new Error('Failed to verify');
+
+      const data = await res.json();
+
+      if (data.length === 0) {
+        errorMsg.textContent = 'Invalid or expired invite code. Please check and try again.';
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+
+      const invite = data[0];
+
+      // Show download section
+      if (invite.name) {
+        welcomeName.textContent = `Welcome, ${invite.name}! Download the app to get started.`;
+      }
+
+      codeSection.classList.add('hidden');
+      downloadSection.classList.remove('hidden');
+      downloadSection.classList.add('visible');
+
+      // Mark as redeemed (fire and forget)
+      fetch(`${SUPABASE_URL}/rest/v1/invites?code=eq.${encodeURIComponent(code.toUpperCase())}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'return=minimal',
+        },
+        body: JSON.stringify({ redeemed_at: new Date().toISOString() }),
+      }).catch(() => {});
+
+    } catch {
+      errorMsg.textContent = 'Something went wrong. Please try again.';
+      errorMsg.classList.remove('hidden');
+    } finally {
+      btn.disabled = false;
+      btnText.textContent = 'Verify';
+    }
+  }
+</script>
