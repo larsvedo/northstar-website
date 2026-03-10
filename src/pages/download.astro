@@ -86,7 +86,7 @@ import "../styles/global.css";
 
           <a
             id="download-link"
-            href="https://github.com/larsvedo/northstar/releases/latest"
+            href="/downloads/NorthStar.dmg"
             class="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full bg-(--color-accent-solid) px-10 py-4 text-base font-medium text-white transition-all duration-500 hover:bg-(--color-accent-solid-hover) hover:shadow-glow hover:scale-[1.02]"
           >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -190,17 +190,7 @@ import "../styles/global.css";
       downloadSection.classList.remove('hidden');
       downloadSection.classList.add('visible');
 
-      // Resolve latest DMG download URL
-      try {
-        const ghRes = await fetch('https://api.github.com/repos/larsvedo/northstar/releases/latest');
-        if (ghRes.ok) {
-          const release = await ghRes.json();
-          const dmg = release.assets?.find((a: any) => a.name.endsWith('.dmg'));
-          if (dmg) {
-            document.getElementById('download-link')?.setAttribute('href', dmg.browser_download_url);
-          }
-        }
-      } catch {}
+      // DMG is served from /downloads/NorthStar.dmg (hosted on Vercel)
 
       // Mark as redeemed (fire and forget)
       fetch(`${SUPABASE_URL}/rest/v1/invites?code=eq.${encodeURIComponent(code.toUpperCase())}`, {
